@@ -1,0 +1,31 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["npm", "start"]
+    environment:
+      - NODE_ENV=development
+      - REDIS_URL=redis://cache
+    ports:
+      - 8080:8080
+    networks:
+      - redis-net
+    links:
+      - redis
+  redis:
+    image: sameersbn/redis:4.0.9-1
+    container_name: cache
+    expose:
+      - 6379
+    volumes:
+      - /tmp/docker/redis:/var/lib/redis
+    restart: always
+    networks:
+      - redis-net
+
+networks:
+  redis-net:
+volumes:
+  redis-data:
