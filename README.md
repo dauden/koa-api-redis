@@ -6,7 +6,7 @@
 inside root directory of project
 ## run with docker (Make sure you have docker in your machine)
 to run app with docker you just need run command line below
-- `$docker build Dockderfile`
+- `$docker build ./`
 - `$docker-compose build`
 - `$docker-compose up --force-recreate`
 - open your brower and go to localhost:8080/get/"user_id" to get banned work counter of user e.g 
